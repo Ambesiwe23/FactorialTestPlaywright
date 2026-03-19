@@ -6,9 +6,7 @@ import org.testng.annotations.*;
 
 import java.nio.file.Paths;
 
-/**
- * BaseTest handles setup, teardown, and screenshot capture
- */
+
 public class BaseTest {
 
     protected Playwright playwright;
@@ -26,11 +24,7 @@ public class BaseTest {
         page.navigate("http://qainterview.pythonanywhere.com");
     }
 
-    /**
-     * Capture screenshot after each test
-     * - Helps debugging
-     * - Required for submission evidence
-     */
+
     @AfterMethod
     public void captureScreenshot(ITestResult result) {
 
