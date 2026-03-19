@@ -44,6 +44,15 @@ The testing approach includes:
 
 ---
 
+## Observations
+
+Some tests fail due to application issues such as:
+- Result element not becoming visible
+- Incorrect API method used
+- UI inconsistencies
+
+These failures indicate defects in the application rather than test issues.
+
 ## How to Run Tests
 
 ### 1. Install dependencies
