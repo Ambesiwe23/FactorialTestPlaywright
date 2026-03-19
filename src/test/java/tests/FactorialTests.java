@@ -27,6 +27,27 @@ public class FactorialTests extends BaseTest {
         assertTrue(result.contains("1"));
     }
 
+     @Test
+   public void testLargeFactorialNumbers() {
+    FactorialPage factorialPage = new FactorialPage(page);
+
+    int[] testNumbers = {170, 171, 500, 991, 1000};
+
+    for (int num : testNumbers) {
+        String result = factorialPage.calculateFactorial(String.valueOf(num));
+        System.out.println("Input: " + num + " | Output: " + result);
+
+        if (num <= 170) {
+            assertFalse(result.isEmpty(), "Result should display for " + num);
+        } else if (num <= 991) {
+            assertTrue(result.contains("Infinity") || result.contains("overflow"),
+                    "Expected 'Infinity' or overflow for " + num);
+        } else {
+            assertTrue(result.isEmpty() || result.toLowerCase().contains("error"),
+                    "No response expected for " + num);
+        }
+    }
+
     @Test
     public void testNegativeInput() {
         FactorialPage factorialPage = new FactorialPage(page);
@@ -68,14 +89,14 @@ public class FactorialTests extends BaseTest {
     public void testPageTitle() {
         FactorialPage factorialPage = new FactorialPage(page);
 
-        assertEquals(factorialPage.getPageTitle(), "Factorial Calculator");
+        assertEquals(factorialPage.getPageTitle(), "The greatest factorial calculator!");
     }
 
     @Test
     public void testHyperlinks() {
         FactorialPage factorialPage = new FactorialPage(page);
 
-        String[] links = {"About", "Help", "Contact"};
+        String[] links = {"About","Terms and Conditions", "Privacy"};
 
         for (String link : links) {
             factorialPage.clickLink(link);
